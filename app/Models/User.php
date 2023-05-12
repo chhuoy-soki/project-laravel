@@ -28,10 +28,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    // protected $hidden = [
+    //     'password',
+    //     'remember_token',
+    // ];
 
     /**
      * The attributes that should be cast.
@@ -41,4 +41,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public static function store($request, $id = null){
+        $user = $request->only(
+            'name',
+            'email',
+            'password',
+        );
+        if ($id) {
+            $data = self::updateOrCreate(['id' => $id], $user);    //update data
+        } else {
+            $data = self::create($user);
+            $id = $data->id;
+        }
+        return $user;
+    }
 }
