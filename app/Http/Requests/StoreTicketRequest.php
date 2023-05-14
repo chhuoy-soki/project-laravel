@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 
-class StoreUserRequest extends FormRequest
+class StoreTicketRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,7 +20,6 @@ class StoreUserRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json(['success' => false, 'message' => $validator->errors()], 412));
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -29,15 +28,9 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=> [
-                "required",
-                Rule::unique('users')->ignore($this->id)
-            ],
-            'email'=> [
-                "required",
-                Rule::unique('users')->ignore($this->id)
-            ],
-            'password' => 'required'
+            'price'=> "required",
+            'user_id' => 'required|unique:tickets',
+            'event_id'=> "required"
         ];
     }
 }

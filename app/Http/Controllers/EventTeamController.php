@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BookingTicket;
+use App\Models\EventTeam;
 use Illuminate\Http\Request;
 
-class BookingTicketController extends Controller
+class EventTeamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class BookingTicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(BookingTicket $bookingTicket)
+    public function show(EventTeam $eventTeam)
     {
         //
     }
@@ -34,7 +34,7 @@ class BookingTicketController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BookingTicket $bookingTicket)
+    public function update(Request $request, EventTeam $eventTeam)
     {
         //
     }
@@ -42,7 +42,7 @@ class BookingTicketController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(BookingTicket $bookingTicket)
+    public function destroy(EventTeam $eventTeam)
     {
         //
     }

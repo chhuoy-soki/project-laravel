@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreEventRequest;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -12,15 +13,19 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $event = Event::all();
+        return response()->json(['success'=> true, 'data'=>$event], 200);
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreEventRequest $request)
     {
-        //
+        $event = Event::store($request);
+        return response()->json(['success'=> true, 'data'=>$event], 200);
+
     }
 
     /**
