@@ -37,21 +37,27 @@ Route::get('events/{id}',[EventController::class, 'show']);
 Route::post('events',[EventController::class, 'store']);
 Route::put('events/{id}',[EventController::class, 'update']);
 Route::delete('events/{id}',[EventController::class, 'destroy']);
-// Route::get('events/search',[EventController::class, 'search']);
+
 
 
 
 ///------Route Ticket API-----------------
 Route::get('tickets',[TicketController::class, 'index']);
+Route::get('tickets/{id}',[TicketController::class, 'show']);
 Route::post('tickets',[TicketController::class, 'store']);
+Route::put('tickets/{id}',[TicketController::class, 'update']);
+Route::delete('tickets/{id}',[TicketController::class, 'destroy']);
 
 
 ///-----------Route Teams--------------------
 Route::get('teams',[TeamController::class, 'index']);
+Route::get('teams/{id}',[TeamController::class, 'show']);
 Route::post('teams',[TeamController::class, 'store']);
+Route::put('teams/{id}',[TeamController::class, 'update']);
+Route::delete('teams/{id}',[TeamController::class, 'destroy']);
 
 
-// Route::get('eventTeam',[EventTeamController::class, 'index']);
-// Route::post('eventTeam',[EventTeamController::class, 'store']);
+
+
 
 

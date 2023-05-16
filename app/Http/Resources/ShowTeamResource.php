@@ -18,7 +18,7 @@ class ShowTeamResource extends JsonResource
             'id'=>$this->id,
             'team_name'=>$this->team_name,
             'member'=>$this->member,
-            'teams'=>EventResource::collection($this->event)
+            // 'event'=>EventResource::collection($this->event)
         ];
     }
 }

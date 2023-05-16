@@ -27,8 +27,8 @@ class StoreEventTeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'team_id'=> "required",
-            'event_id'=> "required",
+            // 'team_id'=> "required",
+            // 'event_id'=> "required",
         ];
     }
 }

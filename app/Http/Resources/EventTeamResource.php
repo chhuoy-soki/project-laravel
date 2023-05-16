@@ -15,15 +15,15 @@ class EventTeamResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'=>$this->id,
-            'type_sport'=>$this->type_sport,
-            'date'=>$this->date,
-            'time'=>$this->time,
-            'staduim'=>$this->staduim,
-            'location'=>$this->location,
-            'descriptio'=>$this->descriptio,
-            'teams'=>TeamResource::collection($this->teams),
-            'eventteam'=>$this->teams
+            // 'id'=>$this->id,
+            // 'type_sport'=>$this->type_sport,
+            // 'date'=>$this->date,
+            // 'time'=>$this->time,
+            // 'staduim'=>$this->staduim,
+            // 'location'=>$this->location,
+            // 'descriptio'=>$this->descriptio,
+            // 'teams'=>TeamResource::collection($this->teams),
+            // 'eventteam'=>$this->teams
         ];
     }
 }

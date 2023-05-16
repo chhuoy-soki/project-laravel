@@ -22,6 +22,7 @@ class EventResource extends JsonResource
             'staduim'=>$this->staduim,
             'location'=>$this->location,
             'descriptio'=>$this->description,
+            'teams'=>TeamResource::collection($this->teams)
         ];
     }
 }
