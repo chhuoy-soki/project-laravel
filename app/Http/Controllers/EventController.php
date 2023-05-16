@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Resources\EventResource;
+use App\Http\Resources\ShowEventResource;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -14,7 +17,9 @@ class EventController extends Controller
     public function index()
     {
         $event = Event::all();
-        return response()->json(['success'=> true, 'data'=>$event], 200);
+        $event = Event::where('type_sport', 'like', '%' .request('type_sport'). '%')->get();
+        $events = EventResource::collection($event);
+        return response()->json(['success'=> true, 'data'=>$events], 200);
 
     }
 
@@ -31,24 +36,36 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Event $event)
+    public function show($id)
     {
-        //
+        $event = Event::find($id);
+        $event = new ShowEventResource($event);
+        return response()->json(['success'=> true, 'data'=>$event], 200);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, $id)
     {
-        //
+        $event = Event::store($request,$id);
+        return response()->json(['success'=> true, 'data'=>$event], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
-        //
+        $event = Event::find($id);
+        $event->delete();
+        return response()->json(['success'=> true, 'message'=>"Delete successful"], 200);
+
     }
+    // public function search(Request $request)
+    // {
+    //    $event_type= $request->get('type_sport');
+    //     $events = Event::where('type_sport', 'like', '%' .$event_type. '%')->get();
+    //     return response()->json(['success' =>true, 'data' =>$events],201);
+    // }
 }

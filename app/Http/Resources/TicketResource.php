@@ -19,6 +19,7 @@ class TicketResource extends JsonResource
             'price'=>$this->price,
             'event'=>$this->event->type_sport,
             'date'=>$this->event->date,
+            'time'=>$this->event->time,
             'buyer'=>$this->user->name,
             'email'=>$this->user->email,
         ];

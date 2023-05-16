@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Resources\TicketResource;
 use App\Models\Ticket;
@@ -26,12 +27,6 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
-        // $ticket = Ticket::create([
-        //     'price'=> request('price'),
-        //     'user_id'=> request('user_id'),
-        //     'event_id' => request('event_id')
-        // ]);
-        // dd(1);
         $ticket = Ticket::store($request);
         return response()->json(['success'=> true, 'data'=>$ticket], 200);
     }

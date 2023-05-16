@@ -2,13 +2,11 @@
 
 namespace App\Http\Requests;
 
-
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
 
-class StoreEventRequest extends FormRequest
+class StoreEventTeamRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,13 +27,8 @@ class StoreEventRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type_sport'=> ["required"],
-            'date'=> ["required"],
-            'time'=> ["required"],
-            'staduim'=> ["required"],
-            'location'=> ["required"],
-            'teams'=> ["required"],
-
+            'team_id'=> "required",
+            'event_id'=> "required",
         ];
     }
 }

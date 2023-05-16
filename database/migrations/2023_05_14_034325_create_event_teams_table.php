@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('event_teams', function (Blueprint $table) {
             $table->id();
-            $table->string('staduim');
             $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')->references('id')->on('teams')
             ->onDelete('cascade');

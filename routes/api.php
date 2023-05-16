@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventTeamController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
@@ -32,7 +33,11 @@ Route::put('users/{id}',[UserController::class, 'destroy']);
 
 ///-----Route Event-------API----------------------------
 Route::get('events',[EventController::class, 'index']);
+Route::get('events/{id}',[EventController::class, 'show']);
 Route::post('events',[EventController::class, 'store']);
+Route::put('events/{id}',[EventController::class, 'update']);
+Route::delete('events/{id}',[EventController::class, 'destroy']);
+// Route::get('events/search',[EventController::class, 'search']);
 
 
 
@@ -44,4 +49,9 @@ Route::post('tickets',[TicketController::class, 'store']);
 ///-----------Route Teams--------------------
 Route::get('teams',[TeamController::class, 'index']);
 Route::post('teams',[TeamController::class, 'store']);
+
+
+// Route::get('eventTeam',[EventTeamController::class, 'index']);
+// Route::post('eventTeam',[EventTeamController::class, 'store']);
+
 

@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTeamRequest;
-use App\Http\Resources\TeamResource;
-use App\Models\Team;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 
-class TeamController extends Controller
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $teams = Team::all();
-        $team = TeamResource::collection($teams);
-        return response()->json(['success'=> true, 'data'=>$team], 200);
-
+        //
     }
 
     /**
@@ -25,15 +20,13 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $team = Team::store($request);
-        return response()->json(['success'=> true, 'data'=>$team], 200);
-
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Team $team)
+    public function show(Schedule $schedule)
     {
         //
     }
@@ -41,7 +34,7 @@ class TeamController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Team $team)
+    public function update(Request $request, Schedule $schedule)
     {
         //
     }
@@ -49,7 +42,7 @@ class TeamController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Team $team)
+    public function destroy(Schedule $schedule)
     {
         //
     }

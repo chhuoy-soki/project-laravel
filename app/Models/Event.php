@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Event extends Model
@@ -15,28 +16,33 @@ class Event extends Model
         'time',
         'staduim',
         'location',
+        'description',
     ];
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public static function store($request, $id = null){
-        $event = $request->only(
-            'type_sport',
-            'date',
-            'time',
-            'staduim',
-            'location',
-        );
-        if ($id) {
-            $data = self::updateOrCreate(['id' => $id], $event);    //update data
-        } else {
-            $data = self::create($event);
-            $id = $data->id;
-        }
-        return $event;
+    public function teams(): BelongsToMany{
+        return $this->belongsToMany(Team::class, 'event_teams')->withTimestamps();
     }
     public function ticket(): HasMany{
         return $this->hasMany(Ticket::class);
     }
 
+    public static function store($request, $id = null){
+        $team = $request->only(
+            'type_sport',
+            'date',
+            'time',
+            'staduim',
+            'location',
+            'description',
+        );
+       
+        $team = self::updateOrCreate(['id' => $id], $team);    //update data
+        $teams = request('teams');
+        $team->teams()->sync($teams);
+        return $team;
+    }
+    
+    
 }
